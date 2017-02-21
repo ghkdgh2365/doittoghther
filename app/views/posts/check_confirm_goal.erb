@@ -1,0 +1,15 @@
+<% @check_confirm.each do |c| %>
+    <% if c.updatable_by? current_user %>
+        <div class="well">
+            <p>post_id : <%= c.post_id %></p>
+            <p>pass / fail
+            <% if c.pass_fail === "btn btn-primary confirm_submit1" %>
+            성공</p>
+            <% end %>
+            <% if c.pass_fail === "btn btn-primary confirm_submit2" %>
+            실패</p>
+            <% end %>
+            <p>content : <%= c.confirm_content %></p>
+        </div>
+    <% end %>
+<% end %>

@@ -1,0 +1,17 @@
+<% @posts.each do |p| %>
+  <% if p.updatable_by? current_user %>
+    <div class="well">
+        <p>목표 : <%= p.title %></p>
+        <p>목표 상세내용 : <%= p.content %></p>
+        <p>목표달성 :
+        <% if p.is_confirmed === 1|| p.is_confirmed === 2 %>
+            <% if p.is_confirmed ===1 %>
+                성공</p>
+            <% else %>
+                실패</p>
+            <% end %>
+        <% end %>
+        <p>후기 : <%= p.confirm.confirm_content %></p>
+    </div>
+  <% end %>
+<% end %>

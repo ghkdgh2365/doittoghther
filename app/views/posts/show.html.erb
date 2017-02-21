@@ -1,0 +1,196 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class='col-md-12'>
+    <p style='text-align:right;'>
+      created by <%= current_user.email %>, <%= @post.created_at %>
+    </p>
+  </div>
+</div>
+<% if @post.bulletin.post_type == :blog %>
+  <p>
+    <strong>목표:</strong>
+    <%= @post.title %>
+  </p>
+  <p>
+    <strong>구체적인 목표와 계획:</strong>
+    <%= @post.content %>
+  </p>
+  <p>
+    <strong>시작 날짜:</strong>
+    <%= @post.start_day %>
+  </p>
+  <p>
+    <strong>종료 날짜:</strong>
+    <%= @post.end_day %>
+  </p>
+  <p>
+    <strong>예치금:</strong>
+    <%= @post.set_money %>
+  </p>
+  <p>
+    <strong>목표달성 확인자:</strong>
+    <%= @post.checker_name %>
+  </p>
+  <p>
+    <strong>목표달성 실패 시 예치금 수령자:</strong>
+    <%= @post.receiver_name %>
+  </p>
+  <p>
+    <strong>예금주:</strong>
+    <%= @post.racer_name %>
+  </p>
+  <% if @post.is_confirmed === 1 || @post.is_confirmed === 2%>
+   <p>
+    <strong>목표달성 : </strong>
+    <%= @post.is_confirmed %>
+  </p>
+  <% end %>
+  <p>
+    <strong>입금 계좌번호:</strong>
+    012345-67-891011 / 씨앗은행 / 예금주:이상해씨
+  </p>
+ 
+  <% unless @post.is_confirmed === 1 || @post.is_confirmed === 2 %>
+  <button type="button" class="btn btn-success success_goal" data-toggle="modal" data-target="#exampleModal_1" data-whatever="<%= @post.racer_name %>">목표달성!</button>
+  <!-- click -> 축하합니다 ! 소감을 작성해주세요 ! -> Yes(게시글 작성 ajax) -> alert(보내주셨던 계좌로 입금됩니다!) -> 버튼 비활성화 -->
+  <button type="button" class="btn btn-danger fail_goal" data-toggle="modal" data-target="#exampleModal_2" data-whatever="<%= @post.racer_name %>">목표달성 실패ㅠ</button>
+  <!-- click -> 아쉽습니다 ㅠ 본인의 실패 원인을 작성해주세요 ! (예치금을 받을 분의 계좌를 써주세요) -> Yes(게시글 작성 ajax)
+   -> alert("예치금이 설정된 분에게 송금됩니다..") -> 버튼 비활성화 -->
+  <% end %>
+  
+<div class="modal fade" id="exampleModal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        
+          <!--<div class="form-group">-->
+          <!--  <label for="recipient-name" class="control-label">Recipient:</label>-->
+          <!--  <input type="text" class="form-control" id="recipient-name">-->
+          <!--</div>-->
+          <div class="form-group">
+            <label for="message-text" class="control-label">축하합니다 ! 소감을 작성해주세요 !</label>
+            <textarea class="form-control" id="message-text1" name="confirm_goal_content"></textarea>
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+        <button value="<%= @post.id %>" type="button" class="btn btn-primary confirm_submit1" data-dismiss="modal">작성 완료</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!--<div class="form-group">-->
+          <!--  <label for="recipient-name" class="control-label">Recipient:</label>-->
+          <!--  <input type="text" class="form-control" id="recipient-name">-->
+          <!--</div>-->
+          <div class="form-group">
+            <label for="message-text" class="control-label">아쉽습니다 ㅠ 본인의 실패 원인을 작성해주세요 !</label>
+            <textarea class="form-control" id="message-text2" name="confirm_goal_content"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+        <button value="<%= @post.id %>" type="button" class="btn btn-primary confirm_submit2" data-dismiss="modal">작성 완료</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% if @post.bulletin.post_type == :bulletin %>
+<div class="well">
+  <p>
+    <strong>제목:</strong>
+    <%= @post.title %>
+  </p>
+  <p>
+    <strong>내용:</strong>
+    <%= @post.content %>
+  </p>
+</div>
+<% end %>
+<% if @post.updatable_by? current_user %>
+<% unless @post.is_confirmed === 1 || @post.is_confirmed === 2 %>
+<%= link_to '수정하기', (@bulletin.present? ? edit_bulletin_post_path(@bulletin, @post)  : edit_post_path(@post)), class: 'btn btn-default' %>
+<% end %>
+<% end %>
+<%= link_to '목록으로', (@bulletin.present? ? bulletin_posts_path(@bulletin) : posts_path), class: 'btn btn-default' %>
+<script>
+$('#exampleModal_1').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('축하합니다!' + recipient + '님')
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
+
+<script>
+$('#exampleModal_2').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('수고하셨습니다!' + recipient + '님')
+  modal.find('.modal-body input').val(recipient)
+})
+
+
+$(".confirm_submit1").click(function(){
+  post_id = this.value;
+  post_content = $("#message-text1").val();
+  pass_fail = $(".confirm_submit1").attr("class"); 
+  check_confirm = 1; //빠꾸짓 함  ..  위에껄로 패스 페일 가릴 수 있는데  ;;; 또 만듬 ;;;; 
+  $.ajax({
+    method: "POST",
+    url: "confirm_goal",
+    data: { confirm_goal_content: post_content, id_of_post: post_id, confirm_pass_fail: pass_fail, checking_confirm:check_confirm },
+    success: function(){
+      alert( "입금하겠습니다.");
+      $(".success_goal").attr("disabled", "disabled");
+      $(".fail_goal").attr("disabled", "disabled");
+    },
+    error: function(){
+      alert( "작성실패");
+    }
+  })
+})
+
+$(".confirm_submit2").click(function(){
+  post_id = this.value;
+  post_content = $("#message-text2").val();
+  pass_fail = $(".confirm_submit2").attr("class");
+  check_confirm = 2;//빠꾸짓 함  ..  위에껄로 패스 페일 가릴 수 있는데  ;;; 또 만듬 ;;;; 
+  $.ajax({
+    method: "POST",
+    url: "confirm_goal",
+    data: { confirm_goal_content: post_content, id_of_post: post_id, confirm_pass_fail: pass_fail, checking_confirm:check_confirm },
+    success: function(){
+      alert( "송금하겠습니다.");
+      $(".success_goal").attr("disabled", "disabled");
+      $(".fail_goal").attr("disabled", "disabled");
+    },
+    error: function(){
+      alert( "작성 실패");
+    }
+  })
+})
+</script>
