@@ -27,6 +27,6 @@
 </table>
 
 <br>
-
-<!--<%= link_to 'New Bulletin', new_bulletin_path, class: 'btn btn-default' %>-->
-      
+<% if @bulletins.updatable_by? current_user %>
+  <%= link_to 'New Bulletin', new_bulletin_path, class: 'btn btn-default' %>
+<% end %>

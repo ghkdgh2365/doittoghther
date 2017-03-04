@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users
   post 'bulletins/:id/posts/confirm_goal' => 'posts#confirm_goal'
   get 'bulletins/:id/posts/confirm_goal_show' =>'posts#confirm_goal_show'
@@ -8,7 +9,14 @@ Rails.application.routes.draw do
     resources :posts
   end
   root 'welcome#index'
-
+  
+  namespace :users do
+    get 'omniauth_callbacks/facebook'
+  end
+  get 'users/omniauth_callbacks'
+  devise_scope :user do  
+    get "/users/auth/facebook/callback" => "users/omniauth_callbacks#facebook"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
