@@ -1,5 +1,5 @@
 class RemoveUserIdFromBulletins < ActiveRecord::Migration
   def change
-    remove_column :bulletins, :user_id, :integer
+    remove_reference :bulletins, :user, index: true, foreign_key: true
   end
 end
