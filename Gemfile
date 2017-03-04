@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
+
 gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth-facebook'
 gem 'devise'

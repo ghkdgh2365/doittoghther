@@ -1,10 +1,59 @@
-<h2>계획만 세우고 하지 않는 당신, 우리가 도와드리겠습니다.</h2>
-<p>: 본 서비스는 "목표 달성을 위해 동기부여를 주어 목표를 달성시킵니다."</p>
-<br />
-<%= link_to "각서 작성하러 가기", bulletin_posts_path(1), class:'btn btn-default' %>
+<!--<h2>계획만 세우고 하지 않는 당신, 우리가 도와드리겠습니다.</h2>-->
+<!--<p>: 본 서비스는 "목표 달성을 위해 동기부여를 주어 목표를 달성시킵니다."</p>-->
+<!--<br />-->
+<!--<%= link_to "각서 작성하러 가기", bulletin_posts_path(1), class:'btn btn-default' %>-->
 <!--<% if user_signed_in? %>-->
 <!--  <p>현재 로그인된 유저의 이메일 : <%= current_user.email %></p>-->
 <!--  <p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></p>-->
 <!--<% else %>-->
 <!--  <p><%= link_to "로그인", new_user_session_path %></p>-->
 <!--<% end %>-->
+
+<div class="flex-container">
+      <div class="flex">
+      </div>
+      <div class="flex">
+        <div class="row" style="width:100%">
+          <div class="col-md-4 col-lg-4">
+          
+          </div>
+          <div class="col-md-4 col-lg-4" style="text-align:center;width:100%">
+            <h1 style="font-size:100px;">DO IT</h1>
+            <h2 style="padding-bottom:20px;">목표 달성을 위한 웹페이지</h2>
+            <%= link_to "목표 달성하러 가기", bulletin_posts_path(1), class:'btn btn-primary btn-lg toggle-btn' %>
+            <h3>목표, 계획은 세웠지만 실천에 옮기기 힘들어 목표달성에 실패한 분들에게 도움을 드립니다.</h3>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            
+          </div>
+        </div>
+      </div>
+      <div class="flex">
+      </div>
+</div>
+
+<style>
+  .flex-container {
+    width:100% !important;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin-bottom:0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .flex {
+    display: flex;
+    flex-grow: 1;
+  }
+  .flex2 {
+    flex-grow: 1;
+  }
+</style>
+<script>
+  $('.dropdown-toggle').dropdown();
+  $( ".toggle-btn" ).click(function() {
+  $( "p" ).toggle( "slow" );
+});
+</script>
