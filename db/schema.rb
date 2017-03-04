@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222154759) do
+ActiveRecord::Schema.define(version: 20170304164812) do
 
   create_table "bulletins", force: :cascade do |t|
     t.string   "title"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20170222154759) do
     t.datetime "updated_at",               null: false
     t.string   "post_type"
     t.integer  "post_type_cd", default: 0
-    t.integer  "users_id"
+    t.integer  "user_id"
   end
 
-  add_index "bulletins", ["users_id"], name: "index_bulletins_on_users_id"
+  add_index "bulletins", ["user_id"], name: "index_bulletins_on_user_id"
 
   create_table "confirms", force: :cascade do |t|
     t.text     "confirm_content"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170222154759) do
   add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
