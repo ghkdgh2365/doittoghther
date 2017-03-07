@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [ :index, :new, :edit, :create, :update, :destroy, :confirm_goal_show, :check_confirm_goal ]
+  before_action :authenticate_user!
   before_action :set_bulletin
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
