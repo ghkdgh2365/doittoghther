@@ -5,7 +5,7 @@
       created by <%= current_user.email %>, <%= @post.created_at %>
     </p>
   </div>
-</div>1111111111111111111111
+</div>
 <% if @post.bulletin.post_type == :blog %>
 <div class="well" style="text-align:center">
   <h2 style="font-weight:bold;">계약서</h2><br/><br/>
@@ -162,7 +162,6 @@ $('#exampleModal_2').on('show.bs.modal', function (event) {
   modal.find('.modal-title').text('수고하셨습니다!' + recipient + '님')
   modal.find('.modal-body input').val(recipient)
 })
-
 
 $(".confirm_submit1").click(function(){
   post_id = this.value;
