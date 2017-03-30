@@ -106,6 +106,8 @@ class PostsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :racer_name, :start_day, :end_day, :set_money, :checker_name, :receiver_name,)
+      params.require(:post).permit(:title, :content, :racer_name, :start_day, :end_day, :set_money, :checker_name, :receiver_name,
+      :is_confirmed, :goal_period, :penalty, :receiver_phone_number, :goal_checker, :support_agree, :phone_number,
+      :information_agree, :goal_category, :goal_type, :penalty_exist, :checker_email)
     end
 end

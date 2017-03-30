@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304170054) do
+ActiveRecord::Schema.define(version: 20170330142409) do
 
   create_table "bulletins", force: :cascade do |t|
     t.string   "title"
@@ -44,11 +44,22 @@ ActiveRecord::Schema.define(version: 20170304170054) do
     t.integer  "set_money"
     t.string   "checker_name"
     t.string   "receiver_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "bulletin_id"
     t.integer  "user_id"
     t.integer  "is_confirmed"
+    t.integer  "goal_period"
+    t.string   "penalty"
+    t.string   "receiver_phone_number"
+    t.string   "goal_checker"
+    t.string   "phone_number"
+    t.string   "goal_category"
+    t.boolean  "goal_type"
+    t.boolean  "information_agree"
+    t.boolean  "support_agree"
+    t.string   "penalty_exist"
+    t.string   "checker_email"
   end
 
   add_index "posts", ["bulletin_id"], name: "index_posts_on_bulletin_id"

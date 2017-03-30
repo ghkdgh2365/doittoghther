@@ -14,9 +14,22 @@
         <%= f.input :start_day, label: "시작날짜" %>
         <%= f.input :end_day, label:"종료날짜" %>
         <%= f.input :set_money, label: "예치금액" , placeholder:"금액이 높으면 높을 수록 의지는 UP!"%>
-        <%= f.input :checker_name, label: "목표달성 확인자" , placeholder:"목표 달성 유무를 확인해주는 사람의 이름을 적어주세요. (본인도 가능)"%>
+        <%= f.input :checker_name, label: "목표달성 확인자 이름" , placeholder:"목표 달성 유무를 확인해주는 사람의 이름을 적어주세요. (본인도 가능)"%>
         <%= f.input :receiver_name, label: "실패 시 예치금 수령자", placeholder:"목표 달성 실패시 예치금을 수령할 분의 이름을 적어주세요.(기부를 원할 시 기부 라고 적어주세요)" %>
-        <%= f.input :racer_name, label: "예금주", placeholder:" 예치금 입금 시 예금주를 적어주세요." %>
+        <!--<%= f.input :racer_name, label: "예금주", placeholder:" 예치금 입금 시 예금주를 적어주세요." %>-->
+        <%= f.input :goal_type, as: :boolean, label: "한 번에 달성" %>
+        <%= f.input :goal_period, label: "목표체크 주기" %> 일에 한 번씩
+        <%= f.input :penalty_exist, collection: [ "있음", "없음",], as: :radio_buttons, label: "패널티 상품 유무" %>
+        <%= f.input :penalty, collection: [ "가나", "다라", "마바"], label: "패널티 상품명" %>
+        <%= f.input :receiver_phone_number, label: "수령자 핸드폰 번호" %>
+        <%= f.input :goal_checker, as: :radio_buttons, collection:["본인", "타인"], label: "목표달성 확인자" %>
+        <%= f.input :checker_email, label: "확인자 이메일" %>
+        <%= f.input :support_agree, as: :boolean, label: "알림 도움 동의여부" %>
+        <%= f.input :phone_number, label: "핸드폰 번호" %>
+        <%= f.input :information_agree, label: "개인정보 동의여부" %>
+        <%= f.input :goal_category, as: :radio_buttons, collection: 
+        ["체중조절", "운동", "취미", "어학", "봉사", "재테크", "금연", "종교", "환경", "학습", "독서", "기타"],label: "카테고리" %>
+
       </div>
       <div class="form-actions">
         <%= f.button :submit, "작성 완료" %>
