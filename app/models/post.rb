@@ -6,8 +6,10 @@ class Post < ActiveRecord::Base
     has_one :confirm, dependent: :destroy
     validates :title, presence: true
     validates :content, presence: true
-    validates :set_money, presence: true
     validates :checker_name, presence: true
     validates :receiver_name, presence: true
-    validates :racer_name, presence: true
+    validates :goal_category, presence: true
+    validates :information_agree, presence: true
+    validates :penalty_exist, presence: true
+    validates :goal_checker, presence: true
 end
