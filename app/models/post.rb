@@ -12,4 +12,6 @@ class Post < ActiveRecord::Base
     validates :information_agree, presence: true
     validates :penalty_exist, presence: true
     validates :goal_checker, presence: true
+    validates_date :start_day, :on_or_after => :today
+    validates_date :end_day, :on_or_after => :start_day
 end

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            다짐 작성 페이지 레이아웃
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+            body{
+                padding-top:60px;
+                box-sizing: border-box;
+            }
+            .new_boxes{
+                border:1px solid red;
+                height:100%;
+                display:flex;
+                padding-left:0;
+                padding-right:0;
+            }
+            .box_left{
+                border:1px solid red;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                font-size:50px;
+                /*flex-wrap:wrap;*/
+                /*width:175px;*/
+            }
+            .box_right{
+                border:1px solid red;
+                display:flex;
+                flex-direction:column;
+                justify-content:space-around;
+            }
+            .flex_box{
+                flex-grow:1;
+            }
+            .flex_box:nth-child(2){
+                flex-grow:4;
+            }
+            .flex_left_content{
+                font-size:20px;
+            }
+            .flex_right_row{
+                display:flex;
+            }
+            .flex_right_detail{
+                flex-grow:1;
+            }
+            .category_layout{
+                display:flex;
+                justify-content:space-around;
+                align-items:center;
+                flex-grow:1;
+            }
+            .category_content{
+            }
+            .container-fluid{
+                display:flex;
+                flex-direction:column;
+            }
+            .three_row{
+                flex-grow:1;
+            }
+            .box_box{
+                border: 1px solid blue;
+            }
+            .big_row{
+                flex-grow:1;
+                border: 1px solid red;
+                height:200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="container-fluid">
+                <div class="box_box">
+                    <div class="big_row">
+                        <div class="col-xs-12 col-sm-6 new_boxes">
+                            <div class="flex_box box_left">01
+                                <div class="flex_left_content">목표설정</div>
+                            </div>
+                            <div class="flex_box box_right">
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">나의 목표</div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row"><input type="text"></input></div>
+                                </div>
+                               <div class="flex_right_content">
+                                    <div class="flex_right_row">
+                                        <div class="flex_right_detail">시작일</div>
+                                        <div class="flex_right_detail">종료일</div>
+                                    </div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">
+                                        <div class="flex_right_detail"><input type="date"></input></div>
+                                        <div class="flex_right_detail"><input type="date"></input></div>
+                                    </div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">
+                                        <div class="flex_right_detail">목표 체크 주기
+                                            한번에 달성<input type="checkbox" id="check_period"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row" id="check_period_input"><input type="text"></input>일에 한번</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 new_boxes">
+                            <div class="flex_box box_left">02
+                                <div class="flex_left_content">패널티설정</div>
+                            </div>
+                            <div class="flex_box box_right">
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">
+                                        <div class="flex_right_detail">실패 시 패널티상품 설정
+                                            <input type="radio" name="penalty_exist" id="penalty_exist_on" checked>있음</input>
+                                            <input type="radio" name="penalty_exist" id="penalty_exist_off">없음</input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex_right_content penalty_information">
+                                    <div class="flex_right_row"><input type="text"></input></div>
+                                </div>
+                               <div class="flex_right_content penalty_information">
+                                    <div class="flex_right_row">실패 시 상품 수령자</div>
+                                </div>
+                                <div class="flex_right_content penalty_information">
+                                    <div class="flex_right_row"><input type="text"></input></div>
+                                </div>
+                                <div class="flex_right_content penalty_information">
+                                    <div class="flex_right_row">상품 수령자 핸드폰 번호</div>
+                                </div>
+                                <div class="flex_right_content penalty_information">
+                                    <div class="flex_right_row"><input type="text"></input></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="big_row">
+                        <div class="col-xs-12 col-sm-12 new_boxes">
+                            <div class="flex_box box_left">03
+                                <div class="flex_left_content">카테고리</div>
+                            </div>
+                            <div class="flex_box box_right" style="display:flex; flex-direction:column;">
+                                <div class="row" style="flex-grow:1; display:flex; justify-content:center; align-content:center;">
+                                    <div class="col-xs-12 col-sm-12 flex_right_content category_layout">
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                    </div>
+                                </div>
+                                <div class="row" style="flex-grow:1; display:flex; justify-content:center; align-content:center;">
+                                    <div class="col-xs-12 col-sm-12 flex_right_content category_layout">
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                        <input class="category_content" type="radio" name="penalty_exist">있음</input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="big_row">
+                        <div class="col-xs-12 col-sm-6 new_boxes">
+                            <div class="flex_box box_left">04
+                                <div class="flex_left_content">세부목표 설정</div>
+                            </div>
+                            <div class="flex_box box_right">
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">구체적인 목표와 계획</div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row"><textarea class="form-control" rows="2"></textarea></div>
+                                </div>
+                               <div class="flex_right_content">
+                                    <div class="flex_right_row">목표달성 확인자
+                                        <input type="radio" name="checker" id="check_myself">본인</input>
+                                        <input type="radio" name="checker" id="check_not_myself">타인</input>
+                                    </div>
+                                </div>
+                                <div class="flex_right_content checker_information">
+                                    <div class="flex_right_row "><input type="text"></input></div>
+                                </div>
+                                <div class="flex_right_content checker_information">
+                                    <div class="flex_right_row">확인자 메일 주소</div>
+                                </div>
+                                <div class="flex_right_content checker_information">
+                                    <div class="flex_right_row"><input type="text"></input></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 new_boxes">
+                            <div class="flex_box box_left">05
+                                <div class="flex_left_content">알림도움 및 <br>정보제공 동의</div>
+                            </div>
+                            <div class="flex_box box_right">
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">알림 도움 동의 여부</div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">카카오톡 알림으로 도움을 받으시겠습니까?
+                                        <input type="checkbox" id="support_agree" checked></input>
+                                    </div>
+                                </div>
+                               <div class="flex_right_content phone_number">
+                                    <div class="flex_right_row">본인 핸드폰 번호(선택)</div>
+                                </div>
+                                <div class="flex_right_content phone_number">
+                                    <div class="flex_right_row"><input type="text"></input></div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">개인정보제공 동의</div>
+                                </div>
+                                <div class="flex_right_content">
+                                    <div class="flex_right_row">수령자 정보 및 본인, 목표달성 확인자 정보 제공에 동의하십니까?<input type="checkbox"></input></div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+<script>
+    $( document ).ready(function() {
+        $( "#check_period" ).click(function() {
+          $( "#check_period_input" ).slideToggle( "slow" );
+        });
+        $( "#penalty_exist_on" ).click(function() {
+          $( ".penalty_information" ).slideDown( "fast" );
+        });
+        $( "#penalty_exist_off" ).click(function() {
+          $( ".penalty_information" ).slideUp( "fast" );
+        });  
+        $( "#check_myself" ).click(function() {
+          $( ".checker_information" ).slideDown( "fast" );
+        });
+        $( "#check_not_myself" ).click(function() {
+          $( ".checker_information" ).slideUp( "fast" );
+        });
+        $( "#support_agree" ).click(function() {
+          $( ".phone_number" ).slideToggle( "fast" );
+        });
+    });
+    
+</script>
+</html>
+
+
+        
+<!--<div class="container">-->
+<!--    <div class="container-fluid">-->
+<!--          <div class="row three_row">-->
+<!--            <div class="col-xs-12 col-sm-6 new_boxes">-->
+<!--                <div class="flex_box box_left">01-->
+<!--                    <div class="flex_left_content">목표설정</div>-->
+<!--                </div>-->
+<!--                <div class="flex_box box_right">-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">나의 목표</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                   <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">-->
+<!--                            <div class="flex_right_detail">시작일</div>-->
+<!--                            <div class="flex_right_detail">종료일</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">-->
+<!--                            <div class="flex_right_detail"><input type="text" style="width:100%;"></input></div>-->
+<!--                            <div class="flex_right_detail"><input type="text" style="width:100%;"></input></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">-->
+<!--                            <div class="flex_right_detail">목표 체크 주기</div>-->
+<!--                            <div class="flex_right_detail" style="flex-grow:4">한번에 달성<input type="checkbox"></input></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:50%;"></input>일에 한번</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-12 col-sm-6 new_boxes">-->
+<!--                <div class="flex_box box_left">02-->
+<!--                    <div class="flex_left_content">패널티설정</div>-->
+<!--                </div>-->
+<!--                <div class="flex_box box_right">-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">-->
+<!--                            <div class="flex_right_detail">실패 시 패널티상품 설정</div>-->
+<!--                            <div class="flex_right_detail" style=flex-grow:4>-->
+<!--                                <input type="radio" name="penalty_exist">있음</input>-->
+<!--                                <input type="radio" name="penalty_exist">없음</input>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                   <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">실패 시 상품 수령자</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">상품 수령자 핸드폰 번호</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="row three_row">-->
+<!--            <div class="col-xs-12 col-sm-12 new_boxes">-->
+<!--                <div class="flex_box box_left">03-->
+<!--                    <div class="flex_left_content">카테고리</div>-->
+<!--                </div>-->
+<!--                <div class="flex_box box_right" style="display:flex; flex-direction:column;">-->
+<!--                    <div class="row" style="flex-grow:1; display:flex; justify-content:center; align-content:center;">-->
+<!--                        <div class="col-xs-12 col-sm-12 flex_right_content category_layout">-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="flex-grow:1; display:flex; justify-content:center; align-content:center;">-->
+<!--                        <div class="col-xs-12 col-sm-12 flex_right_content category_layout">-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                            <input class="category_content" type="radio" name="penalty_exist">있음</input>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="row three_row">-->
+<!--            <div class="col-xs-12 col-sm-6 new_boxes">-->
+<!--                <div class="flex_box box_left">04-->
+<!--                    <div class="flex_left_content">세부목표 설정</div>-->
+<!--                </div>-->
+<!--                <div class="flex_box box_right">-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">구체적인 목표와 계획</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                   <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">목표달성 확인자표</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">나의 목표</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">나의 목표</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-12 col-sm-6 new_boxes">-->
+<!--                <div class="flex_box box_left">01-->
+<!--                    <div class="flex_left_content">목표설정</div>-->
+<!--                </div>-->
+<!--                <div class="flex_box box_right">-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">나의 목표</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                   <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">나의 목표</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row">나의 목표</div>-->
+<!--                    </div>-->
+<!--                    <div class="flex_right_content">-->
+<!--                        <div class="flex_right_row"><input type="text" style="width:100%;"></input></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

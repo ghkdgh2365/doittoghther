@@ -1,5 +1,6 @@
 <%= simple_form_for(@bulletin.present? ? [@post.bulletin, @post] : @post) do |f| %>
   <%= f.error_notification %>
+
       <div class="row">
         <div class='col-md-12'>
           <p style='text-align:right;'>
@@ -11,8 +12,8 @@
       <div class="form-inputs">
         <%= f.input :title, label:"목표", placeholder:"당신의 목표를 적어주세요. 예시) 3KG 감량" %>
         <%= f.input :content, label:"구체적인 목표와 계획", placeholder:"목표 달성을 위한 구체적인 계획을 작성해주세요.", input_html: { rows: 10 } %>
-        <%= f.input :start_day, label: "시작날짜" %>
-        <%= f.input :end_day, label:"종료날짜" %>
+        <%= f.input :start_day, label: "시작날짜"%>
+        <%= f.input :end_day, label:"종료날짜"%>
         <%= f.input :checker_name, label: "목표달성 확인자 이름" , placeholder:"목표 달성 유무를 확인해주는 사람의 이름을 적어주세요. (본인도 가능)"%>
         <%= f.input :receiver_name, label: "실패 시 예치금 수령자", placeholder:"목표 달성 실패시 예치금을 수령할 분의 이름을 적어주세요.(기부를 원할 시 기부 라고 적어주세요)" %>
         <%= f.input :goal_type, as: :boolean, label: "한 번에 달성" %>
@@ -27,7 +28,6 @@
         <%= f.input :information_agree, label: "개인정보 동의여부" %>
         <%= f.input :goal_category, as: :radio_buttons, collection: 
         ["체중조절", "운동", "취미", "어학", "봉사", "재테크", "금연", "종교", "환경", "학습", "독서", "기타"],label: "카테고리" %>
-      
       </div>
       <div class="form-actions">
         <%= f.button :submit, "작성 완료" %>
@@ -48,12 +48,12 @@
     <% end %>
 <% end %>
 
+
 <script>
 $( document ).ready(function() {
   $( "label" ).removeAttr( "for"); //라디오버튼 텍스트 누르면 선택되게 해놨음
   // $("input[value=본인]").attr( "id", "post_goal_checker_1");  라디오버튼 애들 아이디 바꿔줄려면 요거 쓰면 됨
 });
-
 </script>
 
 
