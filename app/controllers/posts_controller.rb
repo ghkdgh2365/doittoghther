@@ -12,6 +12,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @times = ((@post.end_day-@post.start_day).to_i)/@post.goal_period
+    @a = 0
+    
   end
 
   # GET /posts/new
