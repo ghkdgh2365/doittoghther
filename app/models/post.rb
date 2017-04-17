@@ -9,9 +9,9 @@ class Post < ActiveRecord::Base
     validates :checker_name, presence: true
     validates :receiver_name, presence: true
     validates :goal_category, presence: true
-    validates :information_agree, presence: true
+    validates :information_agree, presence: true    
     validates :penalty_exist, presence: true
     # validates :goal_checker, presence: true
     validates_date :start_day, :on_or_after => :today
-    validates_date :end_day, :on_or_after => :start_day
+    validates_date :end_day, :after => :start_day
 end
