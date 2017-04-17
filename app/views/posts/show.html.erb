@@ -18,10 +18,8 @@
   <p>목표달성 확인자는<span style="font-weight:bold;font-size:25px;"> <%= @post.checker_name %></span> 님입니다.</p>
   <% unless @post.goal_period == nil %>
   <span style="font-weight:bold;font-size:25px;"> <%= @post.goal_period %> 일에 한 번씩 체크 </span> 
-  <% end %>
   <span style="font-weight:bold;font-size:25px;">총 <%= (@post.end_day-@post.start_day).to_i %> 일</span> 
   <span style="font-weight:bold;font-size:25px;">중 <%= @times %> 번 체크</span> 
-  
   <div class="row">
     <% while @a < @times %>
     <div class="col-xs-3 col-md-1" style="border: 1px solid red;"id="check_day_<%= @a %>">d</div>
@@ -30,7 +28,7 @@
   </div>
   
   <button type="submit" id="check_button" class="btn btn-default">이걸 누르면 value가 하나씩 올라야함</button>
-
+  <% end %>
   <!--<%= @post.check_square[0] %>-->
   <!--<%= @post.check_square[1] %>-->
   <!--<% @i = 1 %>-->
