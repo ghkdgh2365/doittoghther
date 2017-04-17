@@ -13,5 +13,5 @@ class Post < ActiveRecord::Base
     validates :penalty_exist, presence: true
     # validates :goal_checker, presence: true
     validates_date :start_day, :on_or_after => :today
-    validates_date :end_day, :after => :start_day
+    validates_date :end_day, :on_or_after => :start_day
 end
