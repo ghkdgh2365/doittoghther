@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330142409) do
+ActiveRecord::Schema.define(version: 20170412083626) do
 
   create_table "bulletins", force: :cascade do |t|
     t.string   "title"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20170330142409) do
     t.integer  "set_money"
     t.string   "checker_name"
     t.string   "receiver_name"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "bulletin_id"
     t.integer  "user_id"
     t.integer  "is_confirmed"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170330142409) do
     t.boolean  "support_agree"
     t.string   "penalty_exist"
     t.string   "checker_email"
+    t.string   "check_square",          default: "--- []\n"
   end
 
   add_index "posts", ["bulletin_id"], name: "index_posts_on_bulletin_id"

@@ -22,10 +22,42 @@
   
   <div class="row">
     <% while @a < @times %>
-    <div class="col-xs-3 col-md-1" style="border: 1px solid red;">d</div>
-    <% @a+=1 %>
+    <div class="col-xs-3 col-md-1" style="border: 1px solid red;"id="check_day_<%= @a %>">d</div>
+        <% @a+=1 %>
     <% end %>
   </div>
+  
+  <button type="submit" id="check_button" class="btn btn-default">이걸 누르면 value가 하나씩 올라야함</button>
+
+  <!--<%= @post.check_square[0] %>-->
+  <!--<%= @post.check_square[1] %>-->
+  <!--<% @i = 1 %>-->
+  <!--<% @check = @post.start_day %>-->
+  <!--<%= @today %>-->
+  <!--<%= @check %>-->
+  <!--<script>-->
+  <!--$( document ).ready(function() {-->
+  <!--        $( "#check_button" ).click(function() {-->
+  <!--          alert();-->
+  <!--          for (i=1; i < <%= @times %>;){-->
+  <!--            if(<%= @today %> < <%=@check%>){-->
+  <!--            alert(i-1);-->
+  <!--            break;-->
+  <!--            }else{-->
+  <!--              i++;-->
+  <!--            }-->
+  <!--            }-->
+  <!--        $.ajax({-->
+  <!--          method: "POST",-->
+  <!--          url: "check_day",-->
+  <!--          data: { id_of_post: <%= @post.id %>, check_day: 0, check_value: 'o' }-->
+  <!--        })-->
+  <!--          .done(function( msg ) {-->
+  <!--            alert( "Data Saved: " );-->
+  <!--          });-->
+  <!--        });-->
+  <!--});-->
+  <!--</script>-->
   <!--<p>-->
   <!--  <strong>목표:</strong>-->
   <!--  <%= @post.title %>-->

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  post 'bulletins/:id/posts/check_day' => 'posts#check_day'
   devise_for :users
   post 'bulletins/:id/posts/confirm_goal' => 'posts#confirm_goal'
   get 'bulletins/:id/posts/confirm_goal_show' =>'posts#confirm_goal_show'

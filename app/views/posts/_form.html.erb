@@ -15,15 +15,16 @@
         <%= f.input :start_day, label: "시작날짜"%>
         <%= f.input :end_day, label:"종료날짜"%>
         <%= f.input :checker_name, label: "목표달성 확인자 이름" , placeholder:"목표 달성 유무를 확인해주는 사람의 이름을 적어주세요. (본인도 가능)"%>
-        <%= f.input :receiver_name, label: "실패 시 예치금 수령자", placeholder:"목표 달성 실패시 예치금을 수령할 분의 이름을 적어주세요.(기부를 원할 시 기부 라고 적어주세요)" %>
         <%= f.input :goal_type, as: :boolean, label: "한 번에 달성" %>
-        <%= f.input :goal_period, label: "목표체크 주기" %> 일에 한 번씩
-        <%= f.input :penalty_exist, collection: [ "있음", "없음",], as: :radio_buttons, label: "패널티 상품 유무" %>
-        <%= f.input :penalty, collection: [ "가나", "다라", "마바"], label: "패널티 상품명" %>
+        <%= f.input :goal_period, label: "목표체크 주기" %>
+        <%= f.input :penalty_exist, collection: [ "있음", "없음"], as: :radio_buttons, checked: "있음", label: "패널티 상품 유무" %>
+        <%= f.input :penalty, collection: [ "스벅 커피","빕스", "현금" ], label: "패널티 상품명" %>
+        <%= f.input :set_money, label: "패널티 금액" %>
+        <%= f.input :receiver_name, label: "패널티 수령자", placeholder:"목표 달성 실패시 예치금을 수령할 분의 이름을 적어주세요.(기부를 원할 시 기부 라고 적어주세요)" %>
         <%= f.input :receiver_phone_number, label: "수령자 핸드폰 번호" %>
-        <%= f.input :goal_checker, as: :radio_buttons, collection:["본인", "타인"], label: "목표달성 확인자" %>
-        <%= f.input :checker_email, label: "확인자 이메일" %>
-        <%= f.input :support_agree, as: :boolean, label: "알림 도움 동의여부" %>
+        <!--<%= f.input :goal_checker, as: :radio_buttons, collection:["본인", "타인"], label: "목표달성 확인자" %>-->
+        <!--<%= f.input :checker_email, label: "확인자 이메일" %>-->
+        <%= f.input :support_agree, as: :boolean, :input_html => { :checked => true },label: "알림 도움 동의여부" %>
         <%= f.input :phone_number, label: "핸드폰 번호" %>
         <%= f.input :information_agree, label: "개인정보 동의여부" %>
         <%= f.input :goal_category, as: :radio_buttons, collection: 
@@ -50,10 +51,33 @@
 
 
 <script>
-$( document ).ready(function() {
-  $( "label" ).removeAttr( "for"); //라디오버튼 텍스트 누르면 선택되게 해놨음
-  // $("input[value=본인]").attr( "id", "post_goal_checker_1");  라디오버튼 애들 아이디 바꿔줄려면 요거 쓰면 됨
-});
+  
+  $( document ).ready(function() {
+        $( "label" ).removeAttr( "for");//라디오버튼 텍스트 누르면 선택되게 해놨음
+        // $("input[value=본인]").attr( "id", "post_goal_checker_1");  라디오버튼 애들 아이디 바꿔줄려면 요거 쓰면 됨
+        $("option[value=현금]").attr( "id", "cash");
+        $("input[value=있음]").attr( "id", "post_penalty_exist_1");
+        $("input[value=없음]").attr( "id", "post_penalty_exist_2");
+        $( "#post_goal_type" ).click(function() {
+          $( ".post_goal_period" ).slideToggle( "fast" );
+        });
+        $( "#post_penalty_exist_1" ).click(function() {
+          $( ".post_penalty" ).slideDown( "fast" );
+          $( ".post_set_money" ).slideDown( "fast" );
+          $( ".post_receiver_name" ).slideDown( "fast" );
+          $( ".post_receiver_phone_number" ).slideDown( "fast" );
+        });
+        $( "#post_penalty_exist_2" ).click(function() {
+          $( ".post_penalty" ).slideUp( "fast" );
+          $( ".post_set_money" ).slideUp( "fast" );
+          $( ".post_receiver_name" ).slideUp( "fast" );
+          $( ".post_receiver_phone_number" ).slideUp( "fast" );
+        });
+        $( "#post_support_agree" ).click(function() {
+          $( ".post_phone_number" ).slideToggle( "fast" );
+        });
+    });
+
 </script>
 
 

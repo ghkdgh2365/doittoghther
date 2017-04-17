@@ -15,9 +15,18 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @times = ((@post.end_day-@post.start_day).to_i)/@post.goal_period
     @a = 0
-    
+    @today = Date.today
+
   end
 
+  def check_day
+    @post = Post.find(params[:id_of_post])
+    @post.check_square[0] = params[:check_value]
+    @post.save
+    
+    redirect_to :back
+    
+  end
   # GET /posts/new
   def new
     @post = @bulletin.present? ? @bulletin.posts.new : Post.new
@@ -112,6 +121,6 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :content, :racer_name, :start_day, :end_day, :set_money, :checker_name, :receiver_name,
       :is_confirmed, :goal_period, :penalty, :receiver_phone_number, :goal_checker, :support_agree, :phone_number,
-      :information_agree, :goal_category, :goal_type, :penalty_exist, :checker_email)
+      :information_agree, :goal_category, :goal_type, :penalty_exist, :checker_email, :check_square)
     end
 end
